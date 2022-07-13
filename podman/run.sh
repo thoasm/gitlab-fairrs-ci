@@ -138,7 +138,8 @@ EOF
 
 # Run all scripts after {build,step}_script on the login node
 else
-
+    echo "Running ${STEP_NAME_ARG} directly on the login node"
+    ls -al ${CONTAINER_STEPS_DIR}
     LOCAL_STEP_SCRIPT="${LOCAL_SCRIPT_DIR}/$(basename -- ${STEP_SCRIPT})"
     podman run --rm "${PODMAN_MOUNT_OPTIONS[@]}" "${CUSTOM_ENV_CI_JOB_IMAGE}" /bin/bash "${LOCAL_STEP_SCRIPT}"
 
